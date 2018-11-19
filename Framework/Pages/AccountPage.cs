@@ -1,10 +1,16 @@
-﻿using System;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 
 namespace Framework.Pages
 {
-    public class AccountPage
+    public class AccountPage : MainPage
     {
+        public IWebDriver webDriver;
+
+        public AccountPage(IWebDriver webDriver) : base(webDriver)
+        {
+            this.webDriver = webDriver;
+        }
+
         #region Locators
 
         private By LOGOUT_BTN =
@@ -28,20 +34,13 @@ namespace Framework.Pages
 
         #region Methods
 
-        public IWebDriver webDriver;
-
-        public AccountPage(IWebDriver webDriver)
-        {
-            this.webDriver = webDriver;
-        }
-
         public OrdersPage GoToOrdersPage()
         {
             var ordersPage = new OrdersPage(webDriver);
-            OrdersBtn.Click();
-            //webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
+            waiters.ClickAndWaitForPageToLoad(OrdersBtn);
             return ordersPage;
         }
+        
         #endregion
     }
 }

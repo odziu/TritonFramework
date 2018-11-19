@@ -1,9 +1,9 @@
 ﻿using System;
+using Framework.PageObjects;
 using Framework.Pages;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
 
 namespace Tests
 {
@@ -11,28 +11,25 @@ namespace Tests
     {
         public IWebDriver webDriver;
         public MainPage mainPage;
-
+        public Header header;
+        
         [SetUp]
-        public void GoToMainPage()
+        public void SetUp()
         {
             webDriver = new ChromeDriver();
             webDriver.Navigate().GoToUrl("https://www.tritonshoes.ru/");
             mainPage = new MainPage(webDriver);
-            webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
+            header = new Header(webDriver);
+            webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(30);
         }
 
         [TearDown]
         public void TearDown()
         {
-            webDriver.Close();
+            if (webDriver != null)
+            {
+                webDriver.Close();
+            }
         }
-
-        /*
-        public IWebElement waitForElement(By locator, int maxSeconds)
-        {
-            return new WebDriverWait(webDriver, TimeSpan.FromSeconds(maxSeconds))
-                .Until(ExpectedConditions.ElementExists(locator));
-        }
-        */
     }
 }

@@ -1,18 +1,22 @@
-﻿using System;
-using System.Threading;
-using Framework.Helpers;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
+﻿using OpenQA.Selenium;
 
 namespace Framework.Pages
 {
-    public class LoginPage : Waiters
+    public class LoginPage : MainPage
     {
+        private IWebDriver webDriver;
+        
+        public LoginPage(IWebDriver webDriver) : base(webDriver)
+        {
+            this.webDriver = webDriver;
+        }
+
         #region Locators
 
         private By LOGIN_FIELD = By.Id("loginform-username");
         private By PASSWORD_FIELD = By.Id("loginform-password");
         private By LOGIN_BTN = By.XPath("//button[@name='login-button']");
+        private By REGISTRATION_BTN = By.XPath("//a[@href='/account/registration']");
 
         #endregion
 
@@ -24,34 +28,28 @@ namespace Framework.Pages
 
         private IWebElement PasswordField => webDriver.FindElement(PASSWORD_FIELD);
 
+        private IWebElement RegistrationBtn => webDriver.FindElement(REGISTRATION_BTN);
+
         #endregion
 
         #region Methods
 
-        private IWebDriver webDriver;
-        
-
-        public LoginPage(IWebDriver webDriver)
-        {
-            this.webDriver = webDriver;
-        }
-
-        public AccountPage GoToAccountPage()
+        public AccountPage LogIn()
         {
             var accountPage = new AccountPage(webDriver);
             LoginField.Clear();
             LoginField.SendKeys("6546565");
             PasswordField.Clear();
             PasswordField.SendKeys("p77p77");
-            LoginBtn.Click();
-            //webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(15);
-            //webDriver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(15);
-            /*
-            WebDriverWait wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(20));
-            IJavaScriptExecutor js = (IJavaScriptExecutor)webDriver;
-            wait.Until(wd => js.ExecuteScript("return document.readyState === 'complete';"));
-            */
+            waiters.ClickAndWaitForPageToLoad(LoginBtn);
             return accountPage;
+        }
+
+        public RegistrationPage GoToRegistrationPage()
+        {
+            var registrationPage = new RegistrationPage(webDriver);
+            waiters.ClickAndWaitForPageToLoad(RegistrationBtn);
+            return registrationPage;
         }
 
         #endregion

@@ -53,11 +53,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\RandomCharsGenerators.cs" />
     <Compile Include="Helpers\Waiters.cs" />
+    <Compile Include="PageObjects\Header.cs" />
     <Compile Include="Pages\AccountPage.cs" />
     <Compile Include="Pages\LoginPage.cs" />
     <Compile Include="Pages\MainPage.cs" />
     <Compile Include="Pages\OrdersPage.cs" />
+    <Compile Include="Pages\ProductsPages\MenShoesPage.cs" />
+    <Compile Include="Pages\ProductsPages\WoomenShoesPage.cs" />
+    <Compile Include="Pages\RegistrationPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
