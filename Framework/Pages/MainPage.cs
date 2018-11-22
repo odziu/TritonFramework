@@ -7,12 +7,15 @@ namespace Framework.Pages
     {
         public IWebDriver webDriver;
         public Waiters waiters;
-        
+
         public MainPage(IWebDriver webDriver)
         {
             this.webDriver = webDriver;
             waiters = new Waiters(webDriver);
         }
+
+        public static string RandomUsername = RandomStringGenerators.CreateRandomString(6);
+        public static string RandomPassword = RandomStringGenerators.CreateRandomString(8);
 
         #region Locators
 

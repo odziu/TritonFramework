@@ -53,7 +53,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helpers\RandomCharsGenerators.cs" />
+    <Compile Include="Helpers\RandomStringGenerators.cs" />
     <Compile Include="Helpers\Waiters.cs" />
     <Compile Include="PageObjects\Header.cs" />
     <Compile Include="Pages\AccountPage.cs" />

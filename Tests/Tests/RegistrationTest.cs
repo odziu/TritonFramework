@@ -5,6 +5,7 @@ namespace Tests.Tests
     public class RegistrationTest : BasicTest
     {
         [Test]
+        [Description("Test verifies that user can create an account and login in it")]
         public void NewAccountCreationTest()
         {
             var page = mainPage
@@ -15,9 +16,11 @@ namespace Tests.Tests
             
                 page.SignUp();
 
-            var accountPage = header.GoToAccountPage();
+            var accountPage = header.GoToAccountPage()
+                .LogOut()
+                .GoToLoginPage()
+                .LogInRandomAccount();
 
-            Assert.IsTrue(accountPage.LogoutBtn.Displayed);
             Assert.AreEqual(accountPage.PageTitle.Text, "Личный кабинет");
         }
 

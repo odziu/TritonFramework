@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using Framework.Helpers;
+using OpenQA.Selenium;
 
 namespace Framework.Pages
 {
@@ -40,7 +41,13 @@ namespace Framework.Pages
             waiters.ClickAndWaitForPageToLoad(OrdersBtn);
             return ordersPage;
         }
-        
+
+        public MainPage LogOut()
+        {
+            var mainPage = new MainPage(webDriver);
+            waiters.ClickAndWaitForPageToLoad(LogoutBtn);
+            return mainPage;
+        }
         #endregion
     }
 }

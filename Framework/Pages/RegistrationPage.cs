@@ -1,5 +1,4 @@
 ﻿using System;
-using Framework.Helpers;
 using OpenQA.Selenium;
 
 namespace Framework.Pages
@@ -33,21 +32,20 @@ namespace Framework.Pages
         #endregion
 
         #region Methods
-
+        
         public MainPage SignUp()
         {
             var mainPage = new MainPage(webDriver);
             LoginField.Clear();
-            LoginField.SendKeys(RandomCharsGenerators.CreateRandomChars(6));
+            LoginField.SendKeys(RandomUsername);
             EmailField.Clear();
             EmailField.SendKeys(DateTime.Now.ToString("MMddyyyyhhmmsstt") + "@mail.com");
             PasswordField.Clear();
-            PasswordField.SendKeys(RandomCharsGenerators.CreateRandomChars(8));
+            PasswordField.SendKeys(RandomPassword);
             waiters.ClickAndWaitForPageToLoad(SignUpBtn);
             return mainPage;
         }
 
         #endregion
-
     }
 }

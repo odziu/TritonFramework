@@ -13,7 +13,6 @@ namespace Framework.Helpers
         {
             this.webDriver = webDriver;
         }
-
         public void ClickAndWaitForPageToLoad(IWebElement element, int timeout = 10)
         {
             var wait = new WebDriverWait(webDriver, TimeSpan.FromSeconds(timeout));
