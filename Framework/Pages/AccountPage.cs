@@ -1,5 +1,4 @@
-﻿using Framework.Helpers;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 
 namespace Framework.Pages
 {

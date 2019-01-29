@@ -7,7 +7,7 @@ using OpenQA.Selenium.Chrome;
 
 namespace Tests
 {
-    public class BasicTest
+    public class BasicDesktopTest
     {
         public IWebDriver webDriver;
         public MainPage mainPage;
@@ -26,10 +26,7 @@ namespace Tests
         [TearDown]
         public void TearDown()
         {
-            if (webDriver != null)
-            {
-                webDriver.Close();
-            }
+            webDriver?.Close();
         }
     }
 }

@@ -1,8 +1,8 @@
 ﻿using NUnit.Framework;
 
-namespace Tests.Tests
+namespace Tests.DesktopTests
 {
-    public class WoomenShoesPageTest : BasicTest
+    public class WoomenShoesPageTest : BasicDesktopTest
     {
         [Test]
         [Description("Test verifies that Woomen Shoes Page is loaded")]
